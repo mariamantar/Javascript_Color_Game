@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Color Game</title>
+    <link rel="stylesheet" href="color.css">
+    <script type="text/javascript" src="js/color.js"></script>
+  </head>
+  <body>
+    <h1>Crazy <span id="colorDisplay">RGB</span> Color  Game</h1>
+    <div id="container">
+   <div class="square"></div>
+   <div class="square"></div>
+   <div class="square"></div>
+   <div class="square"></div>
+   <div class="square"></div>
+   <div class="square"></div>
+   </div>
+  </body>
+
+<!-- javascript -->
+  <script>
+  var colors = [
+    "rgb(255, 0, 0)",
+    "rgb(255, 255, 0)",
+    "rgb(0, 255, 0)",
+    "rgb(0, 255, 255)",
+    "rgb(0, 0, 255)",
+    "rgb(255, 0, 255)"
+  ]
+
+  // now we want to loop through each square and assign a color to each square
+  // The querySelectorAll() method returns all elements in the document that matches a specified CSS selector
+  var squares = document.querySelectorAll(".square");
+  var pickedColor = colors[3];
+  var colorDisplay = document.getElementById("colorDisplay");
+  // this will display the chosen color at the top
+  colorDisplay.textContent = pickedColor
+
+  for(var i = 0; i < squares.length; i++){
+    // add colors to squares
+    squares[i].style.backgroundColor = colors[i];
+  // add click listeners to squares
+squares[i].addEventListener("click", function(){
+  // grab color of clicked square
+  var clickedColor = this.style.backgroundColor;
+   // compare color to the picked one
+   if(clickedColor === pickedColor){
+     alert("correct!");
+   } else {
+     alert("WRONG!")
+   }
+});
+}
+
+
+
+  </script>
+</html>
